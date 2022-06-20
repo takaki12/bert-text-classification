@@ -9,10 +9,10 @@ BERTでテキスト分類を試す。
 
 **プログラム**  
 text_classification.pyを実行すれば、ファインチューニングができる。  
-(実行後、以下の3つのフォルダが生成される)  
-./lightning_logs に学習時のログが保存される。  
-./model にベストモデルが保存される。  
-./model_transformers を指定することでモデルを直接読み込むことができる。
+(実行後、以下の3つが生成される)  
+・./lightning_logs : 学習時のログが保存される。  
+・./model : ベストモデルが保存される。  
+・./model_transformers : 指定することでモデルを直接読み込むことができる。
 
 **TensorBoard**:学習時の学習データに対する損失の値の時間変化を確認できる。  
 `$ tensorboard --logdir ./`  
