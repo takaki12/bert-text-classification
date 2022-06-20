@@ -104,9 +104,12 @@ class BertForSequenceClassification_pl(pl.LightningModule):
 
     # テストデータ評価指標
     def test_step(self, batch, batch_idx):
+        labels = batch.pop('labels')
         output = self.bert_sc(**batch)
-        test_loss = output.loss
-        self.log('test_loss', test_loss)
+        labels_predicted = output.logits.argmax(-1)
+        num_correct = ( labels_predicted == labels ).sum().item()
+        accuracy = num_correct/labels.size(0)
+        self.log('accuracy', accuracy)
 
     # オプティマイザ - Adam使う
     def configure_optimizers(self):
