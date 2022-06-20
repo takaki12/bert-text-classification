@@ -142,8 +142,8 @@ print('ベストモデルのファイル: ', checkpoint.best_model_path)
 print('ベストモデルの検証データに対する損失: ', checkpoint.best_model_score)
 
 # テストデータによる評価
-test = trainer.test(test_dataloaders=dataloader_test)
-print(f'Accuracy: {test[0]["accuracy"]:.sf}')
+test = trainer.test(dataloaders=dataloader_test)
+print(f'Accuracy: {test[0]["accuracy"]:.2f}')
 
 # モデルのロード
 model = BertForSequenceClassification_pl.load_from_checkpoint(
