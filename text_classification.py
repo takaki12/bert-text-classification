@@ -1,3 +1,5 @@
+# BERTのファインチューニング
+
 import random
 import glob
 from tqdm import tqdm
