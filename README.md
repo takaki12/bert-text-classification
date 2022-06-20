@@ -8,7 +8,7 @@ BERTでテキスト分類をする。
 '$ tar -zxf ldcc-20140209'
 
 **プログラム**  
-text_classification.pyを実行すれば、ファインチューニングができる。 
+text_classification.pyを実行すれば、ファインチューニングができる。  
 (実行後)  
 ./lightning_logs に学習時のログが保存される。  
 ./model にベストモデルが保存される。  
