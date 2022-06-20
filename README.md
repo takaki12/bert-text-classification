@@ -10,7 +10,7 @@ BERTでテキスト分類をする。
 **プログラム**  
 text_classification.pyを実行すれば、ファインチューニングができる。 
 (実行後)  
-./lightning_logs に学習時のログが保存される。
+./lightning_logs に学習時のログが保存される。  
 ./model にベストモデルが保存される。  
 ./model_transformers を指定することでモデルを直接読み込むことができる。
 
