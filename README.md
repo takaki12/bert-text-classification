@@ -1,6 +1,6 @@
 # bert-text-classification
-BERTでテキスト分類をする。
-[bert-large-japanese](https://huggingface.co/cl-tohoku/bert-large-japanese)をファインチューニングし、livedoorのニュースコーパスの本文からそのカテゴリーを予測させる。
+BERTでテキスト分類を試す。
+[bert-large-japanese](https://huggingface.co/cl-tohoku/bert-large-japanese)をファインチューニングし、livedoorのニュースコーパスの本文からそのカテゴリーを予測する。
 
 **データセット**  
 [liveddorのニュースコーパス](https://www.rondhuit.com/download.html)  
@@ -9,7 +9,7 @@ BERTでテキスト分類をする。
 
 **プログラム**  
 text_classification.pyを実行すれば、ファインチューニングができる。  
-(実行後)  
+(実行後、以下の3つのフォルダが生成される)  
 ./lightning_logs に学習時のログが保存される。  
 ./model にベストモデルが保存される。  
 ./model_transformers を指定することでモデルを直接読み込むことができる。
