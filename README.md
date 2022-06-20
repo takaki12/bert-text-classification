@@ -15,7 +15,9 @@ text_classification.pyを実行すれば、ファインチューニングがで�
 ./model_transformers を指定することでモデルを直接読み込むことができる。
 
 **TensorBoard**:学習時の学習データに対する損失の値の時間変化を確認できる。  
-`$ tensorboard --logdir ./`
+`$ tensorboard --logdir ./`  
+
+test_model.py では、ファインチューニングしたモデルを使った推論ができる。  
 
 **参考**  
 BERTによる自然言語処理入門
