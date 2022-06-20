@@ -121,7 +121,7 @@ checkpoint = pl.callbacks.ModelCheckpoint(
 trainer = pl.Trainer(
     gpus=[1],
     # 1だと個数、[1]だと番号
-    max_epochs=1,
+    max_epochs=10,
     callbacks=[checkpoint]
 )
 
