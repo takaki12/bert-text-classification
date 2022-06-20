@@ -8,9 +8,10 @@ from transformers import BertJapaneseTokenizer, BertForSequenceClassification
 import pytorch_lightning as pl
 
 # GPU設定
-import os
+"""import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+"""
 
 # 日本語学習モデル
 MODEL_NAME = 'cl-tohoku/bert-large-japanese'
@@ -34,7 +35,7 @@ tokenizer = BertJapaneseTokenizer.from_pretrained(MODEL_NAME)
 
 # データの形式を整える
 cnt = 0
-max_length = 512
+max_length = 126
 dataset_for_loader = []
 for label, category in enumerate(tqdm(category_list)):
     for file_name in glob.glob(f'./data/text/{category}/{category}*'):
@@ -79,6 +80,7 @@ class BertForSequenceClassification_pl(pl.LightningModule):
             lr (float): 学習率
         """
 
+        super().__init__()
         self.save_hyperparameters()
 
         # bertモデルのロード
@@ -110,7 +112,7 @@ class BertForSequenceClassification_pl(pl.LightningModule):
     def configure_optimizers(self):
         return torch.optim.Adam(self.parameters(), lr=self.hparams.lr)
 
-checkpoint = pl.callbacks.ModelChekpoint(
+checkpoint = pl.callbacks.ModelCheckpoint(
     monitor = 'val_loss', #val_lossの監視
     mode = 'min', # val_lossが小さいモデルを保存
     save_top_k = 1, # 最も小さいものにする
@@ -120,8 +122,9 @@ checkpoint = pl.callbacks.ModelChekpoint(
 
 # 学習方法を指定
 trainer = pl.Trainer(
-    #gpus=1,
-    max_epochs=10,
+    gpus=[1],
+    # 1だと個数、[1]だと番号
+    max_epochs=1,
     callbacks=[checkpoint]
 )
 
@@ -135,8 +138,8 @@ model = BertForSequenceClassification_pl(
 trainer.fit(model, dataloader_train, dataloader_val)
 
 best_model_path = checkpoint.best_model_path
-print('ベストモデルのファイル: ', checkpoint.best_modl_path)
-print('ベストモデルの検証データに対する損失: ', checkpoint.best_modl_score)
+print('ベストモデルのファイル: ', checkpoint.best_model_path)
+print('ベストモデルの検証データに対する損失: ', checkpoint.best_model_score)
 
 # テストデータによる評価
 test = trainer.test(test_dataloaders=dataloader_test)
