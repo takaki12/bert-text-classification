@@ -4,8 +4,8 @@ BERTでテキスト分類をする。
 
 **データセット**  
 [liveddorのニュースコーパス](https://www.rondhuit.com/download.html)  
-./data/にあるtar.gzを解凍して使用する。
-'$ tar -zxf ldcc-20140209'
+./data/にあるtar.gzを解凍して使用する。  
+    $ tar -zxf ldcc-20140209
 
 **プログラム**  
 text_classification.pyを実行すれば、ファインチューニングができる。  
@@ -15,9 +15,7 @@ text_classification.pyを実行すれば、ファインチューニングがで�
 ./model_transformers を指定することでモデルを直接読み込むことができる。
 
 **TensorBoard**:学習時の学習データに対する損失の値の時間変化を確認できる。
-'''
-$ tensorboard --logdir ./
-'''
+    $ tensorboard --logdir ./
 
 **参考**  
 BERTによる自然言語処理入門
