@@ -14,7 +14,7 @@ text_classification.pyを実行すれば、ファインチューニングがで�
 ./model にベストモデルが保存される。  
 ./model_transformers を指定することでモデルを直接読み込むことができる。
 
-**TensorBoard**:学習時の学習データに対する損失の値の時間変化を確認できる。
+**TensorBoard**:学習時の学習データに対する損失の値の時間変化を確認できる。  
 `$ tensorboard --logdir ./`
 
 **参考**  
