@@ -13,7 +13,7 @@ import pytorch_lightning as pl
 MODEL_NAME = 'cl-tohoku/bert-large-japanese'
 # いつもの cl-tohoku/bert-base-japanese-whole-word-masking
 
-# データを前処理
+# データの前処理
 category_list = [
     'dokujo-tsushin',
     'it-life-hack',
@@ -30,7 +30,6 @@ category_list = [
 tokenizer = BertJapaneseTokenizer.from_pretrained(MODEL_NAME)
 
 # データの形式を整える
-cnt = 0
 max_length = 126
 dataset_for_loader = []
 for label, category in enumerate(tqdm(category_list)):
